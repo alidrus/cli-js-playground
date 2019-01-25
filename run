@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+require('@babel/register');
+var fs = require('fs');
+var error = false;
+
+if (process.argv.length < 3)
+{
+    console.log('Usage: ' + process.argv[1] + ' <scriptFile.js>');
+    process.exit(1);
+}
+
+var scriptFile = process.argv[2];
+
+fs.access(scriptFile, fs.constants.F_OK, function (errorObj) {
+    if (!errorObj)
+    {
+        require("./" + process.argv[2]);
+    }
+    else
+    {
+        fs.access(scriptFile + '.js', fs.constants.F_OK, function (errorObj) {
+            if (!errorObj)
+            {
+                require("./" + process.argv[2]);
+            }
+            else
+            {
+                console.log('Script file ' + scriptFile + ' not found. Aborting!');
+                process.exit(2);
+            }
+        });
+    }
+});
