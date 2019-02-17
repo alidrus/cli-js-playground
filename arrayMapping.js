@@ -36,4 +36,18 @@ let list = [
     }
 ];
 
-console.dir(list.map(x => x.label.en));
+console.dir(list);
+
+let anotherList = list.map((x) => {
+    // modifying x will mutate the original array
+    x.test = 'hello world';
+
+    // returning a value without modifying x will not mutate the original array
+    return {
+        label: x.label
+    };
+});
+
+console.dir(list);
+
+console.dir(anotherList);
