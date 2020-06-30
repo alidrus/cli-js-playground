@@ -1,3 +1,5 @@
+#!/usr/bin/env -S node --harmony
+
 /**
  * vim: syntax=javascript expandtab tabstop=4 shiftwidth=4 softtabstop=4:
  */
@@ -22,14 +24,29 @@ let data = JSON.parse(countries);
     
 } 
  */
+
+let sanitize = (text) => {
+    if (text)
+    {
+        const newText = text.replace(/\'/g, "\\\'");
+        return "'" + newText + "'";
+    }
+
+    return "null";
+};
+
 console.log("<?php");
 data.forEach(country => {
-    let create = "Country.create([\n"
-        + "    'name'                 => '" + country.name + "',\n"
-        + "    'calling_code'         => '" + country.countryCallingCodes[0] + "',\n"
-        + "    'iso_3166_alpha2_code' => '" + country.alpha2 + "',\n"
-        + "    'emoji_flag'           => '" + country.emoji + "',\n"
-        + "    'currency'             => '" + country.currencies[0] + "',\n"
+    if (country.status !== "assigned" || country.currencies.length === 0 || country.countryCallingCodes.length === 0)
+    {
+        return;
+    }
+    let create = "Country::create([\n"
+        + "    'name'            => " + sanitize(country.name) + ",\n"
+        + "    'calling_code'    => " + sanitize(country.countryCallingCodes[0]) + ",\n"
+        + "    'iso_3166_alpha2' => " + sanitize(country.alpha2) + ",\n"
+        + "    'emoji_flag'      => " + sanitize(country.emoji) + ",\n"
+        + "    'currency'        => " + sanitize(country.currencies[0]) + ",\n"
         + "]);\n"
     console.log(create);
 });
