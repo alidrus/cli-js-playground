@@ -32,3 +32,6 @@ testObj.subObj.setNum(100);
 
 console.dir(testObj.getNum());
 console.dir(testObj.subObj.getNum());
+
+const emptyObject = {};
+console.log(Object.keys(emptyObject).length);
