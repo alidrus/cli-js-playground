@@ -4,6 +4,9 @@
  * vim: syntax=javascript expandtab tabstop=4 shiftwidth=4 softtabstop=4:
  */
 
+var a = true;
+console.log(typeof a === 'boolean');
+
 var x = [1, 2, 3];
 console.log(x instanceof Array);
 
