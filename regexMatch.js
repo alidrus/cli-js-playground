@@ -1,10 +1,8 @@
-#!/usr/bin/env -S node --harmony
-
 /**
  * vim: syntax=javascript expandtab tabstop=4 shiftwidth=4 softtabstop=4:
  */
 
-let samples = [
+const samples = [
     '123',
     '.',
     '0.00',
@@ -14,4 +12,15 @@ let samples = [
 samples.forEach((sample) => {
     let matches = sample.match(/^([1-9][0-9]*|0)(.[0-9][0-9])?$/);
     console.dir(matches);
+});
+
+const list = [
+    'main',
+    'beat',
+    'backing',
+    'other',
+];
+
+list.forEach((item) => {
+    console.log(/^(main|beat|backing)$/.test(item));
 });
