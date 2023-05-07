@@ -40,7 +40,9 @@ let list = [
     }
 ];
 
+console.log('The original array:');
 console.dir(list);
+console.log('');
 
 let anotherList = list.map((x) => {
     // modifying x will mutate the original array
@@ -52,6 +54,10 @@ let anotherList = list.map((x) => {
     };
 });
 
+console.log('The original array, after the mutating list.map() call:');
 console.dir(list);
+console.log('');
 
+console.log('Another array, assigned the value of the list.map() call. It receives the original value of the array before the mutation occured:');
 console.dir(anotherList);
+console.log('');
