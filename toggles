@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+
+let instruction = '0111';
+
+const instructionToButtons = () => {
+    let toggles = '';
+    for (let i = 0; i < instruction.length; i++) {
+        toggles += (instruction.charAt(i) === '1' ? '◉':'◯');
+    }
+    return toggles;
+};
+
+const setBitOn = (n) => {
+    let tmpInstruction = '';
+    for (let i = 0; i < instruction.length; i++) {
+        tmpInstruction += (i === n ? '1' : instruction.charAt(i));
+    }
+    instruction = tmpInstruction;
+};
+
+const setBitOff = (n) => {
+    let tmpInstruction = '';
+    for (let i = 0; i < instruction.length; i++) {
+        tmpInstruction += (i === n ? '0' : instruction.charAt(i));
+    }
+    instruction = tmpInstruction;
+};
+
+console.log(instructionToButtons());
+
+setBitOn(0);
+
+console.log(instructionToButtons());
+
+setBitOff(2);
+
+console.log(instructionToButtons());
