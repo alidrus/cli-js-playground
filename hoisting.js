@@ -2,14 +2,14 @@
  * vim: syntax=javascript expandtab tabstop=4 shiftwidth=4 softtabstop=4:
  */
 
-// This works
+// Hoisting works for functions declared using the "function name() {}" format
 yourFunc();
 
 function yourFunc() {
     console.log('hello from yourFunc');
 }
 
-// This works
+// Hoisting also works for all functions within an object
 const someObj = {
     func2() {
         someObj.func1();
@@ -20,7 +20,8 @@ const someObj = {
 };
 someObj.func2();
 
-// This doesn't work
+// There is no hoisting for functions declared using the "const name = () =>
+// {};" a.k.a arrow functions, so the following line will produce an error:
 myFunc();
 
 const myFunc = function() {
