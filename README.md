@@ -18,7 +18,7 @@ npm install
 ```
 
 # How to run the scripts?
-After [installation](#Installation)), you may run any of the scripts as follows:
+After [installation](#Installation), you may run any of the scripts as follows:
 ```bash
 ./run <script.js>
 ```
